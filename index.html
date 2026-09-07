@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>長崎ケンポー団 | データに基づく健康経営・社会保険料削減プロジェクト</title>
+    <meta name="description" content="長崎県の社会保険料負担を下げ、社員の生産性を向上させるデータドリブンな健康経営プロジェクト。ケンポー団式・保険料削減シミュレーター公開中。">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ヘッダー / ナビゲーション -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <span class="logo-badge">長崎データ塾2026実証</span>
+                <span class="logo-text">長崎ケンポー団</span>
+            </a>
+            <nav class="nav">
+                <a href="#problem" class="nav-link">地域の課題</a>
+                <a href="#impact" class="nav-link">経済インパクト</a>
+                <a href="#analysis" class="nav-link">データ分析の真実</a>
+                <a href="#roi" class="nav-link">健診のROI</a>
+                <a href="#simulator" class="nav-link nav-highlight">削減シミュレーター</a>
+            </nav>
+            <div class="header-actions">
+                <a href="#simulator" class="btn btn-secondary btn-sm">無料試算</a>
+                <a href="#download-modal" class="btn btn-primary btn-sm modal-trigger">資料DL</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. ヒーローセクション（ファーストビュー） -->
+        <section class="hero">
+            <div class="hero-bg-glow"></div>
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <i data-lucide="shield-check"></i>
+                        <span>データに基づく健康経営・保険料削減プロジェクト</span>
+                    </div>
+                    <h1 class="hero-title">
+                        社長、健診で社員を半日休ませるのは<br>
+                        <span class="text-gradient-gold">『コスト』ではありません。</span>
+                    </h1>
+                    <p class="hero-description">
+                        健康経営は、企業の社会保険料負担を下げ、社員の生産性を1人あたり<strong class="highlight-badge">+20万円</strong>押し上げる、最も利回りの良い「投資」です。データを武器に、長崎の企業と働く人の未来を変える。
+                    </p>
+                    <div class="hero-cta-group">
+                        <a href="#simulator" class="btn btn-gold btn-lg">
+                            <i data-lucide="calculator"></i>
+                            自社の削減額を測る：無料シミュレーション
+                        </a>
+                        <a href="#download-modal" class="btn btn-outline-light btn-lg modal-trigger">
+                            <i data-lucide="file-text"></i>
+                            レポートをダウンロード（PDF）
+                        </a>
+                    </div>
+                    <div class="hero-kpi-grid">
+                        <div class="hero-kpi-card">
+                            <div class="kpi-label">長崎県の現行保険料率</div>
+                            <div class="kpi-value warning">10.45<span class="unit">%</span></div>
+                            <div class="kpi-sub">全国ワースト4位</div>
+                        </div>
+                        <div class="hero-kpi-card">
+                            <div class="kpi-label">潜在的経済還流額</div>
+                            <div class="kpi-value gold">170<span class="unit">億円/年</span></div>
+                            <div class="kpi-sub">県内経済への好循環</div>
+                        </div>
+                        <div class="hero-kpi-card">
+                            <div class="kpi-label">健診10%改善の生産性効果</div>
+                            <div class="kpi-value primary">+20<span class="unit">万円/人</span></div>
+                            <div class="kpi-sub">県民1人あたり総生産向上</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 現状の課題（長崎・企業のリアルな痛み） -->
+        <section id="problem" class="section section-dark">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-tag">REALITY IN NAGASAKI</span>
+                    <h2 class="section-title">見過ごされている『社会保険料』の格差</h2>
+                    <p class="section-subtitle">
+                        「健康になろう」という精神論では人は動きません。私たちは「手取りが増える、企業の支出が減る」という圧倒的な経済的メリットで行動変容を促します。
+                    </p>
+                </div>
+
+                <div class="problem-grid">
+                    <div class="problem-card glass-card">
+                        <div class="card-header-badge warning">長崎県の現在地</div>
+                        <h3 class="problem-card-title">長崎県の健康保険料率</h3>
+                        <div class="rate-comparison">
+                            <div class="rate-box rate-nagasaki">
+                                <span class="rate-region">長崎県（全国ワースト4位）</span>
+                                <span class="rate-number">10.45<span class="unit">%</span></span>
+                                <span class="rate-detail">特定健診受診率 全国ワースト2位</span>
+                            </div>
+                            <div class="rate-vs">VS</div>
+                            <div class="rate-box rate-niigata">
+                                <span class="rate-region">新潟県（全国最低水準）</span>
+                                <span class="rate-number">9.35<span class="unit">%</span></span>
+                                <span class="rate-detail">全国トップクラスの健診受診率</span>
+                            </div>
+                        </div>
+                        <div class="rate-gap-banner">
+                            <i data-lucide="alert-triangle"></i>
+                            <div>
+                                その差はわずか <strong>1.1%</strong>。しかし、年収400万円の社員1人あたり<br>
+                                <span class="highlight-gold">年間 約44,000円</span> の会社・社員双方への負担増！
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="problem-chart-card glass-card">
+                        <h3 class="problem-card-title">年収別・年間保険料負担の格差比較</h3>
+                        <p class="text-muted">（長崎県 10.45% VS 新潟県 9.35% / 労使折半考慮）</p>
+                        <div class="chart-container">
+                            <canvas id="rateGapChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 経済効果のシミュレーション（地域インパクト） -->
+        <section id="impact" class="section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-tag">REGIONAL IMPACT</span>
+                    <h2 class="section-title">年間170億円が長崎に還流する未来</h2>
+                    <p class="section-subtitle">
+                        長崎県の保険料率を最低水準まで引き下げることができれば、医療費として県外へ流出していた資金を地域経済へ戻すことができます。
+                    </p>
+                </div>
+
+                <div class="impact-wrapper">
+                    <div class="impact-stats-grid">
+                        <div class="impact-stat-card">
+                            <div class="stat-icon"><i data-lucide="trending-up"></i></div>
+                            <div class="stat-number">170<span class="unit">億円/年</span></div>
+                            <div class="stat-title">全県レベルの資金還流</div>
+                            <div class="stat-desc">保険料率を全国最低水準（9.35%）まで改善できた場合に県内に留まる想定インパクト。</div>
+                        </div>
+                        <div class="impact-stat-card">
+                            <div class="stat-icon"><i data-lucide="coins"></i></div>
+                            <div class="stat-number">16<span class="unit">億円/年</span></div>
+                            <div class="stat-title">わずか 0.1% 改善の経済効果</div>
+                            <div class="stat-desc">保険料率がわずか0.1%下がるだけでも、毎年約16億円が県内企業と家計の余裕に変わります。</div>
+                        </div>
+                        <div class="impact-stat-card">
+                            <div class="stat-icon"><i data-lucide="user-check"></i></div>
+                            <div class="stat-number">+20<span class="unit">万円</span></div>
+                            <div class="stat-title">社員1人あたりの生産性</div>
+                            <div class="stat-desc">健診率10%向上による健康寿命延伸とパフォーマンス改善がもたらす年間生産性価値。</div>
+                        </div>
+                    </div>
+
+                    <div class="impact-flow-card glass-card">
+                        <h3 class="impact-flow-title"><i data-lucide="refresh-cw"></i> 経済循環のポジティブ・ループ</h3>
+                        <div class="flow-steps">
+                            <div class="flow-step">
+                                <div class="step-num">01</div>
+                                <h4>特定健診受診の推進</h4>
+                                <p>企業主導で健診受診率向上＆重症化予防</p>
+                            </div>
+                            <div class="flow-arrow"><i data-lucide="arrow-right"></i></div>
+                            <div class="flow-step">
+                                <div class="step-num">02</div>
+                                <h4>医療費（療養給付費）抑制</h4>
+                                <p>慢性疾患の重症化・長引く入院を減らす</p>
+                            </div>
+                            <div class="flow-arrow"><i data-lucide="arrow-right"></i></div>
+                            <div class="flow-step">
+                                <div class="step-num">03</div>
+                                <h4>保険料率の低下</h4>
+                                <p>企業コスト削減 ＆ 従業員の手取りアップ</p>
+                            </div>
+                            <div class="flow-arrow"><i data-lucide="arrow-right"></i></div>
+                            <div class="flow-step highlight">
+                                <div class="step-num">04</div>
+                                <h4>地域経済への再投資</h4>
+                                <p>手取り増加による消費拡大と事業投資</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. データ分析の真実（何が効いて、何が効かないか） -->
+        <section id="analysis" class="section section-dark">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-tag">DATA SCIENCE & EVIDENCE</span>
+                    <h2 class="section-title">データ分析が暴いた、制度の真実</h2>
+                    <p class="section-subtitle">
+                        長崎データ塾2026での重回帰分析・多変量解析によって明らかになった「何が本当に保険料率を左右しているのか」のエビデンス。
+                    </p>
+                </div>
+
+                <div class="analysis-contrast-grid">
+                    <!-- 効かないこと -->
+                    <div class="contrast-card wrong-approach">
+                        <div class="contrast-header">
+                            <i data-lucide="x-circle" class="icon-wrong"></i>
+                            <div>
+                                <span class="contrast-subtitle">従来のアプローチ</span>
+                                <h3 class="contrast-title">【実は効かないこと】</h3>
+                            </div>
+                        </div>
+                        <div class="contrast-body">
+                            <p class="contrast-main-text">
+                                協会けんぽの「インセンティブ5指標」の点数稼ぎだけを頑張っても、保険料率はほぼ下がりません。
+                            </p>
+                            <div class="metric-badge-box">
+                                <div class="metric-label">重回帰分析による決定係数</div>
+                                <div class="metric-value">R² ≈ 0.2</div>
+                                <div class="metric-desc">（インセンティブ指標と保険料率の相関はきわめて限定的）</div>
+                            </div>
+                            <ul class="contrast-list">
+                                <li>インセンティブによる調整幅は最大でも±0.46%程度</li>
+                                <li>表面的なポイント獲得活動は本質的な解決にならない</li>
+                                <li>現場の書類作業が増えるだけで医療費削減に直結しない</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 本当に効くこと -->
+                    <div class="contrast-card right-approach">
+                        <div class="contrast-header">
+                            <i data-lucide="check-circle-2" class="icon-right"></i>
+                            <div>
+                                <span class="contrast-subtitle">データが示す本質</span>
+                                <h3 class="contrast-title">【本当に効くこと（真のボトルネック）】</h3>
+                            </div>
+                        </div>
+                        <div class="contrast-body">
+                            <p class="contrast-main-text">
+                                保険料率の9割を決めているのは<strong>「療養給付費（医療費そのもの）」</strong>です。
+                            </p>
+                            <div class="metric-badge-box primary">
+                                <div class="metric-label">人口あたり病床数と長期入院の構造的相関</div>
+                                <div class="metric-value">r ≈ 0.4 〜 0.5</div>
+                                <div class="metric-desc">（病床過剰による長期入院の誘発が医療費高騰の真因）</div>
+                            </div>
+                            <div class="solution-box">
+                                <h4><i data-lucide="lightbulb"></i> ケンポー団が導き出した唯一の解決策</h4>
+                                <p>
+                                    だからこそ「インセンティブ（お金）」を入り口に、企業が自発的に<strong>「特定健診」</strong>を推進し、病気の重症化と長期入院（療養給付費）を未然に防ぐことが、真の保険料率低下への唯一の道です。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- チャート視覚化 -->
+                <div class="analysis-chart-card glass-card">
+                    <h3 class="chart-card-title">都道府県別：特定健診受診率 VS 医療費（療養給付費）の相関分析</h3>
+                    <p class="text-muted">特定健診受診率が高い地域ほど、一人当たり療養給付費が低く抑えられる傾向が明確に示されています。</p>
+                    <div class="chart-container-lg">
+                        <canvas id="correlationScatterChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. データが証明した「特定健診」の真のROI -->
+        <section id="roi" class="section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-tag">RETURN ON INVESTMENT</span>
+                    <h2 class="section-title">特定健診を10%向上させることで得られる2つの果実</h2>
+                    <p class="section-subtitle">
+                        統計的データ解析（単回帰分析・GAMモデル解析）が実証した、企業と働く人にもたらされるダブルの経済効果。
+                    </p>
+                </div>
+
+                <div class="roi-cards-grid">
+                    <!-- カードA -->
+                    <div class="roi-card glass-card">
+                        <div class="roi-card-header">
+                            <div class="roi-badge"><i data-lucide="percent"></i> 果実 A</div>
+                            <h3>保険料率の直接的な低下</h3>
+                        </div>
+                        <div class="roi-stat-main">
+                            <div class="roi-number">-0.11<span class="unit">%</span></div>
+                            <div class="roi-label">保険料率が低下</div>
+                        </div>
+                        <div class="roi-evidence">
+                            <span class="evidence-tag">単回帰分析 p &lt; 0.001（統計的有意）</span>
+                            <p>
+                                特定健診受診率が10%向上するごとに、都道府県の保険料率が約0.11%低下する明確な負の相関が確認されました。
+                            </p>
+                        </div>
+                        <div class="roi-effect-list">
+                            <div class="effect-item">
+                                <i data-lucide="building"></i>
+                                <span>従業員100名の企業で年間約88万円の社会保険料削減</span>
+                            </div>
+                            <div class="effect-item">
+                                <i data-lucide="user"></i>
+                                <span>従業員の手取り額も同等額増加</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- カードB -->
+                    <div class="roi-card glass-card">
+                        <div class="roi-card-header">
+                            <div class="roi-badge gold"><i data-lucide="trending-up"></i> 果実 B</div>
+                            <h3>企業の生産性・総生産の向上</h3>
+                        </div>
+                        <div class="roi-stat-main gold">
+                            <div class="roi-number">+20<span class="unit">万円</span></div>
+                            <div class="roi-label">県民1人あたり生産性向上</div>
+                        </div>
+                        <div class="roi-evidence">
+                            <span class="evidence-tag gold">GAMモデル解析示唆</span>
+                            <p>
+                                特定健診率10%向上は、病欠リスク低減とパフォーマンス向上を通じ、県民1人あたりの総生産（GDP寄与）を約20万円押し上げます。
+                            </p>
+                        </div>
+                        <div class="roi-effect-list">
+                            <div class="effect-item">
+                                <i data-lucide="zap"></i>
+                                <span>アブセンティーイズム（病欠）の著しい減少</span>
+                            </div>
+                            <div class="effect-item">
+                                <i data-lucide="smile"></i>
+                                <span>プレゼンティーイズム（出勤時の体調不良による能率低下）の改善</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. プロダクト：保険料削減シミュレーター（デモ画面風セクション） -->
+        <section id="simulator" class="section section-dark">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-tag">INTERACTIVE SIMULATOR</span>
+                    <h2 class="section-title">ケンポー団式・保険料削減シミュレーター</h2>
+                    <p class="section-subtitle">
+                        貴社の「従業員数」と「平均年収」を入力してください。特定健診率を向上させた場合の会社負担削減額と社員の手取り増加額を即座に試算します。
+                    </p>
+                </div>
+
+                <!-- シミュレーターアプリ枠 -->
+                <div class="simulator-app-window">
+                    <div class="app-window-header">
+                        <div class="window-buttons">
+                            <span class="btn-dot close"></span>
+                            <span class="btn-dot minimize"></span>
+                            <span class="btn-dot expand"></span>
+                        </div>
+                        <div class="window-title">
+                            <i data-lucide="layout-dashboard"></i> 長崎ケンポー団 SaaS Dashboard v2026
+                        </div>
+                        <div class="window-status">
+                            <span class="status-indicator"></span> リアルタイム試算モード
+                        </div>
+                    </div>
+
+                    <div class="app-window-body">
+                        <div class="sim-grid">
+                            <!-- コントロール入力パネル -->
+                            <div class="sim-input-panel">
+                                <h3 class="panel-title"><i data-lucide="sliders"></i> 試算条件を入力</h3>
+                                
+                                <div class="form-group">
+                                    <div class="form-label-wrapper">
+                                        <label for="employeeCount">従業員数</label>
+                                        <span class="input-val-display" id="employeeCountVal">50 人</span>
+                                    </div>
+                                    <input type="range" id="employeeCount" min="5" max="500" step="5" value="50">
+                                    <div class="range-labels">
+                                        <span>5人</span>
+                                        <span>250人</span>
+                                        <span>500人</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="form-label-wrapper">
+                                        <label for="avgSalary">平均年間給与 (額面)</label>
+                                        <span class="input-val-display" id="avgSalaryVal">400 万円</span>
+                                    </div>
+                                    <input type="range" id="avgSalary" min="200" max="1000" step="10" value="400">
+                                    <div class="range-labels">
+                                        <span>200万</span>
+                                        <span>600万</span>
+                                        <span>1000万</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="form-label-wrapper">
+                                        <label for="currentCheckup">現在の特定健診受診率</label>
+                                        <span class="input-val-display" id="currentCheckupVal">40 %</span>
+                                    </div>
+                                    <input type="range" id="currentCheckup" min="10" max="80" step="5" value="40">
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="form-label-wrapper">
+                                        <label for="targetCheckup">目標の特定健診受診率</label>
+                                        <span class="input-val-display" id="targetCheckupVal">70 %</span>
+                                    </div>
+                                    <input type="range" id="targetCheckup" min="40" max="100" step="5" value="70">
+                                </div>
+
+                                <div class="sim-note">
+                                    <i data-lucide="info"></i>
+                                    <span>長崎県の現在保険料率（10.45%）から健診率改善モデルによる予測低下幅を自動計算します。</span>
+                                </div>
+                            </div>
+
+                            <!-- 結果表示パネル -->
+                            <div class="sim-result-panel">
+                                <h3 class="panel-title"><i data-lucide="pie-chart"></i> 削減額・投資対効果の試算結果</h3>
+                                
+                                <div class="sim-result-primary-card">
+                                    <div class="result-label">年間 会社負担の社会保険料削減額</div>
+                                    <div class="result-number-gold" id="companySavingsDisplay">￥1,320,000</div>
+                                    <div class="result-subtext">＋ 従業員全員の手取り額も同額（合計 ￥1,320,000）増加！</div>
+                                </div>
+
+                                <div class="sim-metrics-grid">
+                                    <div class="sim-metric-box">
+                                        <div class="metric-title">想定 保険料率の低下幅</div>
+                                        <div class="metric-value-lg text-primary" id="rateDropDisplay">-0.33%</div>
+                                        <div class="metric-sub">10.45% → <span id="newRateDisplay">10.12%</span></div>
+                                    </div>
+                                    <div class="sim-metric-box">
+                                        <div class="metric-title">全社の年間生産性向上価値</div>
+                                        <div class="metric-value-lg text-gold" id="productivityDisplay">+￥30,000,000</div>
+                                        <div class="metric-sub">1人あたり約60万円相当</div>
+                                    </div>
+                                </div>
+
+                                <div class="sim-chart-wrapper">
+                                    <canvas id="simResultChart"></canvas>
+                                </div>
+
+                                <div class="sim-action">
+                                    <a href="#download-modal" class="btn btn-gold btn-block modal-trigger">
+                                        <i data-lucide="download"></i> この試算結果を含む詳細レポート（PDF）を取得
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. まとめ / ビジョン（フッター手前のCTA） -->
+        <section class="section section-cta">
+            <div class="container text-center">
+                <div class="cta-box glass-card">
+                    <div class="cta-badge">VISION & MISSION</div>
+                    <h2 class="cta-title">
+                        健康は「コスト」ではなく、<br>
+                        未来の資産を創る<span class="text-gradient-gold">「投資」</span>です。
+                    </h2>
+                    <p class="cta-description">
+                        長崎県が健康を切り口に経済を成長させる未来へ。<br>
+                        データを武器に、貴社の社会保険料適正化と生産性革新を今すぐ始めましょう。
+                    </p>
+                    <div class="cta-buttons">
+                        <a href="#download-modal" class="btn btn-gold btn-xl modal-trigger">
+                            <i data-lucide="file-spread-sheet"></i>
+                            長崎ケンポー団のデータレポート（PDF）を受け取る
+                        </a>
+                    </div>
+                    <div class="cta-footer-note">
+                        <i data-lucide="shield"></i> 登録不要・無料ダウンロード可能 / 長崎データ塾2026研究成果
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-info">
+                <a href="#" class="logo">
+                    <span class="logo-text">長崎ケンポー団</span>
+                </a>
+                <p>データに基づく健康経営・保険料削減プロジェクト</p>
+                <p class="copyright">© 2026 Nagasaki Kenpo-dan Project. All rights reserved.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#problem">現状の課題</a>
+                <a href="#impact">経済インパクト</a>
+                <a href="#analysis">データ分析の真実</a>
+                <a href="#roi">健診のROI</a>
+                <a href="#simulator">シミュレーター</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 資料ダウンロードモーダル -->
+    <div id="download-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content glass-card">
+            <button class="modal-close">&times;</button>
+            <div class="modal-header">
+                <div class="modal-badge"><i data-lucide="file-text"></i> PDF Report</div>
+                <h3>長崎ケンポー団 データ調査報告書 ダウンロード</h3>
+                <p>長崎データ塾2026での重回帰分析・GAMモデル解析等の全データを収録した特別レポートをお送りします。</p>
+            </div>
+            <form id="downloadForm" class="modal-form">
+                <div class="form-group">
+                    <label for="companyName">会社名 / 団体名 <span class="required">*</span></label>
+                    <input type="text" id="companyName" required placeholder="例：株式会社長崎イノベーション">
+                </div>
+                <div class="form-group">
+                    <label for="userName">お名前 <span class="required">*</span></label>
+                    <input type="text" id="userName" required placeholder="例：長崎 太郎">
+                </div>
+                <div class="form-group">
+                    <label for="userEmail">メールアドレス <span class="required">*</span></label>
+                    <input type="email" id="userEmail" required placeholder="例：taro@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="userRole">ご役職</label>
+                    <select id="userRole">
+                        <option value="exec">経営者・役員</option>
+                        <option value="hr">人事・総務責任者</option>
+                        <option value="kenpo">健康保険組合・担当者</option>
+                        <option value="other">その他</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-gold btn-block">
+                    <i data-lucide="send"></i> 無料でレポート（PDF）をダウンロード
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/app.js"></script>
+</body>
+</html>
