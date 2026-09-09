@@ -352,14 +352,14 @@
             </div>
         </section>
 
-        <!-- 6. プロダクト：保険料削減シミュレーター（デモ画面風セクション） -->
+        <!-- 6. プロダクト：保険料削減シミュレーター（KenpoSimulator 統合） -->
         <section id="simulator" class="section section-dark">
             <div class="container">
                 <div class="section-header text-center">
                     <span class="section-tag">INTERACTIVE SIMULATOR</span>
-                    <h2 class="section-title">ケンポー団式・保険料削減シミュレーター</h2>
+                    <h2 class="section-title">令和8年度 協会けんぽ 保険料削減シミュレーター</h2>
                     <p class="section-subtitle">
-                        貴社の「従業員数」と「平均年収」を入力してください。特定健診率を向上させた場合の会社負担削減額と社員の手取り増加額を即座に試算します。
+                        都道府県別の特定健診率・インセンティブ評価指標から、翌年度の予測保険料率、会社負担削減額、従業員手取り増加額をインタラクティブに詳細試算。
                     </p>
                 </div>
 
@@ -372,101 +372,15 @@
                             <span class="btn-dot expand"></span>
                         </div>
                         <div class="window-title">
-                            <i data-lucide="layout-dashboard"></i> 長崎ケンポー団 SaaS Dashboard v2026
+                            <i data-lucide="layout-dashboard"></i> 令和8年度 協会けんぽ 保険料削減シミュレーター Dashboard
                         </div>
                         <div class="window-status">
-                            <span class="status-indicator"></span> リアルタイム試算モード
+                            <span class="status-indicator"></span> Live Simulator Active
                         </div>
                     </div>
 
-                    <div class="app-window-body">
-                        <div class="sim-grid">
-                            <!-- コントロール入力パネル -->
-                            <div class="sim-input-panel">
-                                <h3 class="panel-title"><i data-lucide="sliders"></i> 試算条件を入力</h3>
-                                
-                                <div class="form-group">
-                                    <div class="form-label-wrapper">
-                                        <label for="employeeCount">従業員数</label>
-                                        <span class="input-val-display" id="employeeCountVal">50 人</span>
-                                    </div>
-                                    <input type="range" id="employeeCount" min="5" max="500" step="5" value="50">
-                                    <div class="range-labels">
-                                        <span>5人</span>
-                                        <span>250人</span>
-                                        <span>500人</span>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="form-label-wrapper">
-                                        <label for="avgSalary">平均年間給与 (額面)</label>
-                                        <span class="input-val-display" id="avgSalaryVal">400 万円</span>
-                                    </div>
-                                    <input type="range" id="avgSalary" min="200" max="1000" step="10" value="400">
-                                    <div class="range-labels">
-                                        <span>200万</span>
-                                        <span>600万</span>
-                                        <span>1000万</span>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="form-label-wrapper">
-                                        <label for="currentCheckup">現在の特定健診受診率</label>
-                                        <span class="input-val-display" id="currentCheckupVal">40 %</span>
-                                    </div>
-                                    <input type="range" id="currentCheckup" min="10" max="80" step="5" value="40">
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="form-label-wrapper">
-                                        <label for="targetCheckup">目標の特定健診受診率</label>
-                                        <span class="input-val-display" id="targetCheckupVal">70 %</span>
-                                    </div>
-                                    <input type="range" id="targetCheckup" min="40" max="100" step="5" value="70">
-                                </div>
-
-                                <div class="sim-note">
-                                    <i data-lucide="info"></i>
-                                    <span>長崎県の現在保険料率（10.45%）から健診率改善モデルによる予測低下幅を自動計算します。</span>
-                                </div>
-                            </div>
-
-                            <!-- 結果表示パネル -->
-                            <div class="sim-result-panel">
-                                <h3 class="panel-title"><i data-lucide="pie-chart"></i> 削減額・投資対効果の試算結果</h3>
-                                
-                                <div class="sim-result-primary-card">
-                                    <div class="result-label">年間 会社負担の社会保険料削減額</div>
-                                    <div class="result-number-gold" id="companySavingsDisplay">￥1,320,000</div>
-                                    <div class="result-subtext">＋ 従業員全員の手取り額も同額（合計 ￥1,320,000）増加！</div>
-                                </div>
-
-                                <div class="sim-metrics-grid">
-                                    <div class="sim-metric-box">
-                                        <div class="metric-title">想定 保険料率の低下幅</div>
-                                        <div class="metric-value-lg text-primary" id="rateDropDisplay">-0.33%</div>
-                                        <div class="metric-sub">10.45% → <span id="newRateDisplay">10.12%</span></div>
-                                    </div>
-                                    <div class="sim-metric-box">
-                                        <div class="metric-title">全社の年間生産性向上価値</div>
-                                        <div class="metric-value-lg text-gold" id="productivityDisplay">+￥30,000,000</div>
-                                        <div class="metric-sub">1人あたり約60万円相当</div>
-                                    </div>
-                                </div>
-
-                                <div class="sim-chart-wrapper">
-                                    <canvas id="simResultChart"></canvas>
-                                </div>
-
-                                <div class="sim-action">
-                                    <a href="#download-modal" class="btn btn-gold btn-block modal-trigger">
-                                        <i data-lucide="download"></i> この試算結果を含む詳細レポート（PDF）を取得
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="app-window-body" style="padding: 0; background: #f8fafc; border-bottom-left-radius: var(--radius-lg); border-bottom-right-radius: var(--radius-lg); overflow: hidden;">
+                        <iframe src="simulator.html" style="width: 100%; height: 850px; border: none; display: block;" title="協会けんぽ 保険料削減シミュレーター"></iframe>
                     </div>
                 </div>
             </div>
