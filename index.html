@@ -18,7 +18,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=20260910_2">
 </head>
 <body>
 
@@ -35,11 +35,9 @@
                 <a href="#analysis" class="nav-link">データ分析の真実</a>
                 <a href="#roi" class="nav-link">健診のROI</a>
                 <a href="#simulator" class="nav-link nav-highlight">削減シミュレーター</a>
+                <a href="#members" class="nav-link">長崎ケンポー団とは</a>
             </nav>
-            <div class="header-actions">
-                <a href="#simulator" class="btn btn-secondary btn-sm">無料試算</a>
-                <a href="#download-modal" class="btn btn-primary btn-sm modal-trigger">資料DL</a>
-            </div>
+
         </div>
     </header>
 
@@ -51,7 +49,7 @@
                 <div class="hero-content">
                     <div class="hero-badge">
                         <i data-lucide="shield-check"></i>
-                        <span>データに基づく健康経営・保険料削減プロジェクト</span>
+                        <span>長大データバンクデータ塾「長崎県民の手取りを増やす」プロジェクト</span>
                     </div>
                     <h1 class="hero-title">
                         社長、健診で社員を半日休ませるのは<br>
@@ -60,16 +58,7 @@
                     <p class="hero-description">
                         健康経営は、企業の社会保険料負担を下げ、社員の生産性を1人あたり<strong class="highlight-badge">+20万円</strong>押し上げる、最も利回りの良い「投資」です。データを武器に、長崎の企業と働く人の未来を変える。
                     </p>
-                    <div class="hero-cta-group">
-                        <a href="#simulator" class="btn btn-gold btn-lg">
-                            <i data-lucide="calculator"></i>
-                            自社の削減額を測る：無料シミュレーション
-                        </a>
-                        <a href="#download-modal" class="btn btn-outline-light btn-lg modal-trigger">
-                            <i data-lucide="file-text"></i>
-                            レポートをダウンロード（PDF）
-                        </a>
-                    </div>
+
                     <div class="hero-kpi-grid">
                         <div class="hero-kpi-card">
                             <div class="kpi-label">長崎県の現行保険料率</div>
@@ -334,7 +323,7 @@
                         <div class="roi-evidence">
                             <span class="evidence-tag gold">GAMモデル解析示唆</span>
                             <p>
-                                特定健診率10%向上は、病欠リスク低減とパフォーマンス向上を通じ、県民1人あたりの総生産（GDP寄与）を約20万円押し上げます。
+                                特定健診率10%向上は、病欠リスク低減とパフォーマンス改善がもたらす年間生産性価値。
                             </p>
                         </div>
                         <div class="roi-effect-list">
@@ -380,13 +369,100 @@
                     </div>
 
                     <div class="app-window-body" style="padding: 0; background: #f8fafc; border-bottom-left-radius: var(--radius-lg); border-bottom-right-radius: var(--radius-lg); overflow: hidden;">
-                        <iframe src="simulator.html" style="width: 100%; height: 850px; border: none; display: block;" title="協会けんぽ 保険料削減シミュレーター"></iframe>
+                        <iframe src="simulator.html?v=20260910_4" style="width: 100%; height: 1700px; border: none; display: block;" scrolling="no" title="協会けんぽ 保険料削減シミュレーター"></iframe>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 7. まとめ / ビジョン（フッター手前のCTA） -->
+        <!-- 7. 長崎ケンポー団とは -->
+        <section id="members" class="section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-tag">ABOUT US</span>
+                    <h2 class="section-title">長崎ケンポー団とは</h2>
+                    <p class="section-subtitle">
+                        長崎県の健康経営を推進し、企業の生産性向上を支援する専門家チーム。
+                    </p>
+                </div>
+                <div class="members-grid">
+                    <!-- Member 1 -->
+                    <div class="member-card glass-card">
+                        <div class="member-image-wrapper">
+                            <img src="gazo/cl_03.png" alt="高見 吉忠" class="member-image">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">高見 吉忠</h3>
+                            <div class="member-comment-box">
+                                <span class="comment-placeholder">※コメント準備中...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Member 2 -->
+                    <div class="member-card glass-card">
+                        <div class="member-image-wrapper">
+                            <img src="gazo/cl_02.png" alt="加藤 空武" class="member-image">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">加藤 空武</h3>
+                            <div class="member-comment-box">
+                                <span class="comment-placeholder">※コメント準備中...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Member 3 -->
+                    <div class="member-card glass-card">
+                        <div class="member-image-wrapper">
+                            <img src="gazo/cl_04.png" alt="小場 康剛" class="member-image">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">小場 康剛</h3>
+                            <div class="member-comment-box">
+                                <span class="comment-placeholder">※コメント準備中...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Member 4 -->
+                    <div class="member-card glass-card">
+                        <div class="member-image-wrapper">
+                            <img src="gazo/cl_01.png" alt="直江 孝之" class="member-image">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">直江 孝之</h3>
+                            <div class="member-comment-box">
+                                <span class="comment-placeholder">※コメント準備中...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Member 5 -->
+                    <div class="member-card glass-card">
+                        <div class="member-image-wrapper">
+                            <img src="gazo/cl_06.png" alt="辻本 航" class="member-image">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">辻本 航</h3>
+                            <div class="member-comment-box">
+                                <span class="comment-placeholder">※コメント準備中...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Member 6 -->
+                    <div class="member-card glass-card">
+                        <div class="member-image-wrapper">
+                            <img src="gazo/cl_05.png" alt="森下 享" class="member-image">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">森下 享</h3>
+                            <div class="member-comment-box">
+                                <span class="comment-placeholder">※コメント準備中...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. まとめ / ビジョン（フッター手前のCTA） -->
         <section class="section section-cta">
             <div class="container text-center">
                 <div class="cta-box glass-card">
@@ -399,15 +475,7 @@
                         長崎県が健康を切り口に経済を成長させる未来へ。<br>
                         データを武器に、貴社の社会保険料適正化と生産性革新を今すぐ始めましょう。
                     </p>
-                    <div class="cta-buttons">
-                        <a href="#download-modal" class="btn btn-gold btn-xl modal-trigger">
-                            <i data-lucide="file-spread-sheet"></i>
-                            長崎ケンポー団のデータレポート（PDF）を受け取る
-                        </a>
-                    </div>
-                    <div class="cta-footer-note">
-                        <i data-lucide="shield"></i> 登録不要・無料ダウンロード可能 / 長崎データ塾2026研究成果
-                    </div>
+
                 </div>
             </div>
         </section>
@@ -420,7 +488,7 @@
                 <a href="#" class="logo">
                     <span class="logo-text">長崎ケンポー団</span>
                 </a>
-                <p>データに基づく健康経営・保険料削減プロジェクト</p>
+                <p>長大データバンクデータ塾「長崎県民の手取りを増やす」プロジェクト</p>
                 <p class="copyright">© 2026 Nagasaki Kenpo-dan Project. All rights reserved.</p>
             </div>
             <div class="footer-links">
@@ -429,48 +497,12 @@
                 <a href="#analysis">データ分析の真実</a>
                 <a href="#roi">健診のROI</a>
                 <a href="#simulator">シミュレーター</a>
+                <a href="#members">長崎ケンポー団とは</a>
             </div>
         </div>
     </footer>
 
-    <!-- 資料ダウンロードモーダル -->
-    <div id="download-modal" class="modal">
-        <div class="modal-overlay"></div>
-        <div class="modal-content glass-card">
-            <button class="modal-close">&times;</button>
-            <div class="modal-header">
-                <div class="modal-badge"><i data-lucide="file-text"></i> PDF Report</div>
-                <h3>長崎ケンポー団 データ調査報告書 ダウンロード</h3>
-                <p>長崎データ塾2026での重回帰分析・GAMモデル解析等の全データを収録した特別レポートをお送りします。</p>
-            </div>
-            <form id="downloadForm" class="modal-form">
-                <div class="form-group">
-                    <label for="companyName">会社名 / 団体名 <span class="required">*</span></label>
-                    <input type="text" id="companyName" required placeholder="例：株式会社長崎イノベーション">
-                </div>
-                <div class="form-group">
-                    <label for="userName">お名前 <span class="required">*</span></label>
-                    <input type="text" id="userName" required placeholder="例：長崎 太郎">
-                </div>
-                <div class="form-group">
-                    <label for="userEmail">メールアドレス <span class="required">*</span></label>
-                    <input type="email" id="userEmail" required placeholder="例：taro@example.com">
-                </div>
-                <div class="form-group">
-                    <label for="userRole">ご役職</label>
-                    <select id="userRole">
-                        <option value="exec">経営者・役員</option>
-                        <option value="hr">人事・総務責任者</option>
-                        <option value="kenpo">健康保険組合・担当者</option>
-                        <option value="other">その他</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-gold btn-block">
-                    <i data-lucide="send"></i> 無料でレポート（PDF）をダウンロード
-                </button>
-            </form>
-        </div>
-    </div>
+
 
     <!-- JavaScript -->
     <script src="js/app.js"></script>
