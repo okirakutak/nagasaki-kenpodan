@@ -315,21 +315,17 @@ img {
 }
 
 .header-left {
-    flex: 1;
-    display: flex;
-    justify-content: flex-start;
+    /* バッジの幅に合わせる */
 }
 
 .header-center {
-    flex: 1;
+    flex: 1; /* 残りのスペースをすべて埋める */
     display: flex;
-    justify-content: center;
+    justify-content: center; /* その中でロゴを中央に */
 }
 
 .header-right {
-    flex: 2;
-    display: flex;
-    justify-content: flex-end;
+    /* ナビゲーションの幅に合わせる */
 }
 
 .nav {
