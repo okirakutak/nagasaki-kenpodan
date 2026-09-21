@@ -306,6 +306,14 @@ img {
     letter-spacing: -0.02em;
 }
 
+.site-logo-img {
+    height: 38px;
+    width: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    display: block;
+}
+
 .nav {
     display: flex;
     align-items: center;
