@@ -1453,25 +1453,61 @@ input[type="range"] {
     gap: 1.5rem;
 }
 
-.member-card {
+.member-flip-card {
+    background-color: transparent;
+    perspective: 1000px; /* 3Dフリップ効果用 */
+    cursor: pointer;
+    /* カプセル型（縦長丸）にするため、高さやアスペクト比を調整 */
+    height: 380px; 
+}
+
+.member-flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    border-radius: 200px; /* カプセル型にするための角丸 */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.member-flip-card.is-flipped .member-flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.member-flip-card-front, .member-flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 200px; /* カプセル型の角丸 */
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1.5rem 1rem;
-    text-align: center;
-    transition: var(--transition);
+    justify-content: center;
+    padding: 1.5rem;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.member-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-glow-gold);
-    border-color: rgba(245, 158, 11, 0.4);
+/* 表面（フロント）のスタイル */
+.member-flip-card-front {
+    /* 前面はそのまま */
+}
+
+/* 裏面（バック）のスタイル */
+.member-flip-card-back {
+    transform: rotateY(180deg);
+    background: rgba(16, 185, 129, 0.1); /* 少し色を付けて目立たせる */
+    border-color: rgba(16, 185, 129, 0.3);
 }
 
 .member-image-wrapper {
     width: 100%;
-    height: 180px;
-    margin-bottom: 1rem;
+    height: 160px;
+    margin-bottom: 1.5rem;
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -1485,44 +1521,34 @@ input[type="range"] {
 }
 
 .member-name {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 800;
-    margin-bottom: 0.75rem;
-    color: var(--color-text-dark);
-}
-
-.section-dark .member-name {
-    color: var(--color-text-light);
+    color: var(--color-text-light); /* セクションが暗い背景ならlightに */
+    margin: 0;
 }
 
 .member-comment-box {
-    background: rgba(0, 0, 0, 0.03);
-    border: 1px dashed rgba(0, 0, 0, 0.15);
-    border-radius: var(--radius-sm);
-    padding: 0.75rem 0.5rem;
-    min-height: 70px;
     width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow-y: auto; /* 文章が長い場合はスクロール */
 }
 
-.section-dark .member-comment-box {
-    background: rgba(0, 0, 0, 0.2);
-    border-color: rgba(255, 255, 255, 0.3);
+/* カスタムスクロールバー（コメント欄） */
+.member-comment-box::-webkit-scrollbar {
+    width: 4px;
 }
-
-.comment-placeholder {
-    font-size: 0.75rem;
-    color: var(--color-text-dim);
-    font-style: italic;
-    line-height: 1.4;
+.member-comment-box::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
 }
 
 .member-comment {
-    font-size: 0.78rem;
-    color: var(--color-text);
-    line-height: 1.5;
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
     text-align: left;
     margin: 0;
     width: 100%;
