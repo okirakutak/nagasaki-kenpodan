@@ -206,57 +206,55 @@
                     </p>
                 </div>
 
-                <div class="analysis-contrast-grid">
-                    <!-- 効かないこと -->
-                    <div class="contrast-card wrong-approach">
-                        <div class="contrast-header">
-                            <i data-lucide="x-circle" class="icon-wrong"></i>
-                            <div>
-                                <span class="contrast-subtitle">従来のアプローチ</span>
-                                <h3 class="contrast-title">【実は効かないこと】</h3>
-                            </div>
+                <div class="analysis-summary-card glass-card">
+                    <h3 class="summary-card-title">保険料率を下げるために本当に重要なこと</h3>
+                    <div class="summary-card-body">
+                        <p class="summary-main-text">
+                            協会けんぽのインセンティブ制度は重要な仕組みですが、点数向上そのものが保険料率を大きく左右するわけではありませんでした。
+                        </p>
+                        
+                        <div class="summary-metric-box">
+                            <div class="metric-label">重回帰分析の決定係数：</div>
+                            <div class="metric-value">R² ≒ 0.16</div>
+                            <p class="metric-desc">インセンティブ5指標だけでは保険料率を十分に説明できません。</p>
                         </div>
-                        <div class="contrast-body">
-                            <p class="contrast-main-text">
-                                協会けんぽの「インセンティブ5指標」の点数稼ぎだけを頑張っても、保険料率はほぼ下がりません。
-                            </p>
-                            <div class="metric-badge-box">
-                                <div class="metric-label">重回帰分析による決定係数</div>
-                                <div class="metric-value">R² ≈ 0.2</div>
-                                <div class="metric-desc">（インセンティブ指標と保険料率の相関はきわめて限定的）</div>
-                            </div>
-                            <ul class="contrast-list">
-                                <li>インセンティブによる調整幅は最大でも±0.46%程度</li>
-                                <li>表面的なポイント獲得活動は本質的な解決にならない</li>
-                                <li>現場の書類作業が増えるだけで医療費削減に直結しない</li>
-                            </ul>
-                        </div>
-                    </div>
 
-                    <!-- 本当に効くこと -->
-                    <div class="contrast-card right-approach">
-                        <div class="contrast-header">
-                            <i data-lucide="check-circle-2" class="icon-right"></i>
-                            <div>
-                                <span class="contrast-subtitle">データが示す本質</span>
-                                <h3 class="contrast-title">【本当に効くこと（真のボトルネック）】</h3>
-                            </div>
+                        <p class="summary-text-mt">また、</p>
+                        <ul class="summary-list">
+                            <li><span class="list-label">保険料率の都道府県間格差：</span><span class="list-value">1.34ポイント</span></li>
+                            <li><span class="list-label">インセンティブ制度による調整幅：</span><span class="list-value">最大0.21ポイント</span></li>
+                        </ul>
+                        <p class="summary-text-mb">
+                            であることから、保険料率にはインセンティブ以外の要因が大きく影響していることが示唆されます。
+                        </p>
+
+                        <hr class="summary-divider">
+
+                        <p class="summary-text-mb">
+                            一方で、インセンティブ制度には重要な役割があります。<br>
+                            企業が特定健診の受診を促進することで、
+                        </p>
+                        <ul class="summary-check-list">
+                            <li><i data-lucide="check-circle-2" class="icon-check"></i> 生活習慣病の早期発見・早期治療</li>
+                            <li><i data-lucide="check-circle-2" class="icon-check"></i> 重症化予防</li>
+                            <li><i data-lucide="check-circle-2" class="icon-check"></i> 医療費の抑制</li>
+                        </ul>
+                        <p class="summary-text-mb">につながる可能性があります。</p>
+
+                        <div class="flow-container">
+                            <div class="flow-step">インセンティブ</div>
+                            <i data-lucide="arrow-right" class="flow-arrow"></i>
+                            <div class="flow-step">健診受診率向上</div>
+                            <i data-lucide="arrow-right" class="flow-arrow"></i>
+                            <div class="flow-step">医療費抑制</div>
+                            <i data-lucide="arrow-right" class="flow-arrow"></i>
+                            <div class="flow-step highlight">保険料率低下</div>
                         </div>
-                        <div class="contrast-body">
-                            <p class="contrast-main-text">
-                                保険料率の9割を決めているのは<strong>「療養給付費（医療費そのもの）」</strong>です。
+
+                        <div class="solution-box mt-4">
+                            <p>
+                                <strong>つまり、保険料率を下げるために重要なのは、インセンティブの点数獲得そのものではなく、制度を活用して健康行動を促進し、医療費を抑制することだと考えられます。</strong>
                             </p>
-                            <div class="metric-badge-box primary">
-                                <div class="metric-label">人口あたり病床数と長期入院の構造的相関</div>
-                                <div class="metric-value">r ≈ 0.4 〜 0.5</div>
-                                <div class="metric-desc">（病床過剰による長期入院の誘発が医療費高騰の真因）</div>
-                            </div>
-                            <div class="solution-box">
-                                <h4><i data-lucide="lightbulb"></i> ケンポー団が導き出した唯一の解決策</h4>
-                                <p>
-                                    だからこそ「インセンティブ（お金）」を入り口に、企業が自発的に<strong>「特定健診」</strong>を推進し、病気の重症化と長期入院（療養給付費）を未然に防ぐことが、真の保険料率低下への唯一の道です。
-                                </p>
-                            </div>
                         </div>
                     </div>
                 </div>
