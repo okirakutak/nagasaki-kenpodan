@@ -31,7 +31,7 @@
             <a href="#" class="logo header-center">
                 <img src="gazo/logo.png" alt="長崎ケンポー団" class="site-logo-img">
             </a>
-            <nav class="nav header-right">
+            <nav class="nav header-right" id="desktopNav">
                 <a href="#problem" class="nav-link">地域の課題</a>
                 <a href="#impact" class="nav-link">経済インパクト</a>
                 <a href="#analysis" class="nav-link">データ分析の真実</a>
@@ -39,8 +39,21 @@
                 <a href="#simulator" class="nav-link nav-highlight">削減シミュレーター</a>
                 <a href="#members" class="nav-link">長崎ケンポー団とは</a>
             </nav>
+            <button class="hamburger" id="hamburgerBtn" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobileNav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
         </div>
+        <nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+            <a href="#problem" class="mobile-nav-link">地域の課題</a>
+            <a href="#impact" class="mobile-nav-link">経済インパクト</a>
+            <a href="#analysis" class="mobile-nav-link">データ分析の真実</a>
+            <a href="#roi" class="mobile-nav-link">健診のROI</a>
+            <a href="#simulator" class="mobile-nav-link nav-highlight">削減シミュレーター</a>
+            <a href="#members" class="mobile-nav-link">長崎ケンポー団とは</a>
+        </nav>
     </header>
 
     <main>
@@ -368,8 +381,8 @@
                         </div>
                     </div>
 
-                    <div class="app-window-body" style="padding: 0; background: #f8fafc; border-bottom-left-radius: var(--radius-lg); border-bottom-right-radius: var(--radius-lg); overflow: hidden;">
-                        <iframe src="simulator.html?v=20260910_4" style="width: 100%; height: 1800px; border: none; display: block;" scrolling="no" title="協会けんぽ 保険料削減シミュレーター"></iframe>
+                    <div class="app-window-body simulator-iframe-wrap" style="padding: 0; background: #f8fafc; border-bottom-left-radius: var(--radius-lg); border-bottom-right-radius: var(--radius-lg); overflow: hidden;">
+                        <iframe id="simulatorIframe" src="simulator.html?v=20260910_4" class="simulator-iframe" scrolling="no" title="協会けんぽ 保険料削減シミュレーター"></iframe>
                     </div>
                 </div>
             </div>

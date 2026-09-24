@@ -355,6 +355,63 @@ img {
     gap: 1rem;
 }
 
+/* ハンバーガーボタン（PCでは非表示） */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.hamburger span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: #ffffff;
+    border-radius: 2px;
+    transition: var(--transition);
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* モバイルナビ（PCでは非表示） */
+.mobile-nav {
+    display: none;
+}
+
+/* シミュレーターiframe（JSで高さ自動調整＋CSSフォールバック） */
+.simulator-iframe-wrap {
+    position: relative;
+}
+
+.simulator-iframe {
+    width: 100%;
+    height: 1800px;
+    border: none;
+    display: block;
+}
+
+/* 固定ヘッダー分のスクロール余白 */
+.section {
+    scroll-margin-top: 80px;
+}
+
 /* --------------------------------------------------------------------------
    5. ヒーローセクション
    -------------------------------------------------------------------------- */
@@ -1435,13 +1492,299 @@ input[type="range"] {
     .flow-arrow {
         transform: rotate(90deg);
     }
+    /* 分析セクションの横並びフローも縦積みに */
+    .flow-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .flow-container .flow-arrow {
+        transform: rotate(90deg);
+        align-self: center;
+    }
 }
 
+/* タブレット〜スマホ共通 */
 @media (max-width: 768px) {
-    .nav { display: none; }
+    /* ヘッダー：ハンバーガー表示・ナビ切替 */
+    .header-container {
+        height: 64px;
+        gap: 0.75rem;
+    }
+    .header-center {
+        justify-content: flex-start;
+    }
+    .site-logo-img {
+        height: 36px;
+    }
+    .logo-badge {
+        font-size: 0.6rem;
+        white-space: nowrap;
+    }
+    #desktopNav {
+        display: none;
+    }
+    .hamburger {
+        display: flex;
+    }
+    .mobile-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        background: rgba(6, 26, 19, 0.98);
+        border-top: 1px solid transparent;
+    }
+    .mobile-nav.open {
+        max-height: 480px;
+        border-top-color: rgba(16, 185, 129, 0.15);
+    }
+    .mobile-nav-link {
+        padding: 0.9rem 1.5rem;
+        color: var(--color-text-dim);
+        font-size: 0.95rem;
+        font-weight: 600;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .mobile-nav-link:hover,
+    .mobile-nav-link:active {
+        color: #ffffff;
+        background: rgba(16, 185, 129, 0.1);
+    }
+    .mobile-nav-link.nav-highlight {
+        color: var(--color-gold);
+    }
+
+    /* セクション余白・見出し */
+    .section {
+        padding: 3.5rem 0;
+        scroll-margin-top: 64px;
+    }
+    .section-header {
+        margin-bottom: 2.5rem;
+    }
+    .section-title {
+        font-size: 1.5rem;
+        line-height: 1.4;
+    }
+    .section-subtitle {
+        font-size: 0.95rem;
+    }
+    .glass-card {
+        padding: 1.25rem;
+    }
+
+    /* ヒーロー */
+    .hero {
+        padding: 7rem 0 3rem 0;
+    }
+    .hero-title {
+        font-size: 1.7rem;
+        line-height: 1.5;
+    }
+    .hero-description {
+        font-size: 1rem;
+    }
+    .hero-badge {
+        font-size: 0.75rem;
+        text-align: center;
+        line-height: 1.5;
+    }
     .hero-cta-group { flex-direction: column; }
     .btn-lg { width: 100%; }
-    .cta-title { font-size: 2rem; }
+    .hero-kpi-grid {
+        gap: 1rem;
+    }
+    .kpi-value {
+        font-size: 2rem;
+    }
+
+    /* 課題：料率比較を縦積み */
+    .problem-card-title {
+        font-size: 1.15rem;
+    }
+    .rate-comparison {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .rate-box {
+        width: 100%;
+    }
+    .rate-vs {
+        text-align: center;
+    }
+    .rate-number {
+        font-size: 1.9rem;
+    }
+    .rate-gap-banner {
+        font-size: 0.85rem;
+    }
+    .chart-container {
+        height: 260px;
+    }
+
+    /* 経済インパクト */
+    .impact-stats-grid {
+        gap: 1rem;
+    }
+    .impact-stat-card {
+        padding: 1.5rem 1.25rem;
+    }
+    .stat-number {
+        font-size: 2.1rem;
+    }
+    .flow-step {
+        width: 100%;
+    }
+
+    /* 分析 */
+    .analysis-summary-card {
+        padding: 1.5rem 1.25rem;
+    }
+    .summary-card-title {
+        font-size: 1.2rem;
+    }
+    .summary-main-text,
+    .summary-text-mb,
+    .summary-text-mt {
+        font-size: 0.95rem;
+    }
+    .summary-list li,
+    .summary-check-list li {
+        font-size: 0.95rem;
+    }
+    .metric-value {
+        font-size: 2rem;
+    }
+    .solution-box {
+        font-size: 0.95rem;
+    }
+    .chart-container-lg {
+        height: 300px;
+    }
+    .chart-card-title {
+        font-size: 1.05rem;
+        line-height: 1.5;
+    }
+
+    /* ROI */
+    .roi-cards-grid {
+        gap: 1.25rem;
+    }
+    .roi-number {
+        font-size: 2.6rem;
+    }
+    .roi-card h3 {
+        font-size: 1.15rem;
+    }
+
+    /* シミュレーター窓 */
+    .app-window-header {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        padding: 0.75rem 1rem;
+    }
+    .window-title {
+        font-size: 0.75rem;
+        flex: 1 1 100%;
+        order: 2;
+    }
+    .window-status {
+        margin-left: auto;
+    }
+    .simulator-iframe {
+        height: 2400px;
+    }
+
+    /* CTA */
+    .section-cta {
+        padding: 4rem 0;
+    }
+    .cta-box {
+        padding: 2.5rem 1.25rem;
+    }
+    .cta-title { font-size: 1.6rem; }
+    .cta-description {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    /* フッター */
+    .footer-top {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    .footer-top .nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.75rem 1.25rem;
+    }
+    .footer-bottom {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+
+    /* モーダル */
+    .modal-content {
+        margin: 0 1rem;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+}
+
+/* 小型スマホ */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1rem;
+    }
+    .hero-title {
+        font-size: 1.45rem;
+    }
+    .hero-description {
+        font-size: 0.9rem;
+    }
+    .logo-badge {
+        display: none;
+    }
+    .section-title {
+        font-size: 1.3rem;
+    }
+    .kpi-value {
+        font-size: 1.8rem;
+    }
+    .rate-number {
+        font-size: 1.7rem;
+    }
+    .stat-number {
+        font-size: 1.9rem;
+    }
+    .roi-number {
+        font-size: 2.2rem;
+    }
+    .result-number-gold {
+        font-size: 2.5rem;
+    }
+    .simulator-iframe {
+        height: 2700px;
+    }
+    .chart-container {
+        height: 240px;
+    }
+    .chart-container-lg {
+        height: 280px;
+    }
+    /* カプセルカードは1列で中央寄せ（幅が狭すぎるのを防止） */
+    .members-grid {
+        grid-template-columns: 1fr;
+        max-width: 280px;
+        margin: 0 auto;
+    }
+    .member-flip-card {
+        height: 380px;
+    }
 }
 
 /* --------------------------------------------------------------------------

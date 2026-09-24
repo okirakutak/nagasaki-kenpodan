@@ -18,6 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. 保険料削減シミュレーターの初期化
     initSimulator();
 
+    // 2b. モバイルナビ・iframe自動高さの初期化
+    initMobileNav();
+    initIframeAutoHeight();
+
     // 3. モーダル表示制御の初期化
     initModals();
 });
@@ -309,6 +313,80 @@ function updateSimChart(totalPayroll, companySavings) {
             }
         });
     }
+}
+
+/* ==========================================================================
+   2b. モバイルナビ・iframe自動高さ
+   ========================================================================== */
+
+/**
+ * ハンバーガーメニューの開閉制御
+ */
+function initMobileNav() {
+    const btn = document.getElementById('hamburgerBtn');
+    const nav = document.getElementById('mobileNav');
+    if (!btn || !nav) return;
+
+    const closeNav = () => {
+        btn.classList.remove('active');
+        nav.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        nav.setAttribute('aria-hidden', 'true');
+    };
+
+    btn.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('open');
+        btn.classList.toggle('active', isOpen);
+        btn.setAttribute('aria-expanded', String(isOpen));
+        nav.setAttribute('aria-hidden', String(!isOpen));
+        btn.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニューを開く');
+    });
+
+    // リンクタップで自動で閉じる
+    nav.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', closeNav);
+    });
+}
+
+/**
+ * シミュレーターiframeの高さを内容に合わせて自動調整
+ * 同一オリジンのため contentDocument の高さを参照できる
+ */
+function initIframeAutoHeight() {
+    const iframe = document.getElementById('simulatorIframe');
+    if (!iframe) return;
+
+    const resize = () => {
+        try {
+            const doc = iframe.contentDocument || iframe.contentWindow.document;
+            if (!doc || !doc.body) return;
+            const height = Math.max(
+                doc.body.scrollHeight,
+                doc.documentElement ? doc.documentElement.scrollHeight : 0
+            );
+            // 上下の余白を少し確保し、極端な値を除外
+            if (height > 400 && height < 12000) {
+                iframe.style.height = (height + 20) + 'px';
+            }
+        } catch (e) {
+            // クロスオリジン等で参照できない場合はCSSのフォールバック高さを維持
+        }
+    };
+
+    iframe.addEventListener('load', () => {
+        resize();
+        // React描画の遅延を考慮して複数回リトライ
+        setTimeout(resize, 500);
+        setTimeout(resize, 1500);
+    });
+    window.addEventListener('resize', resize);
+    // 動的コンテンツ変化への保険として定期更新（5秒間隔・10回まで）
+    let count = 0;
+    const timer = setInterval(() => {
+        resize();
+        count++;
+        if (count >= 10) clearInterval(timer);
+    }, 1000);
 }
 
 /* ==========================================================================
