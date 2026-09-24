@@ -590,28 +590,35 @@
         }
         requestAnimationFrame(animate);
 
+        // 全カードを閉じてイラスト面に戻す共通処理
+        function closeAllCards() {
+            for (var j = 0; j < cards.length; j++) {
+                if (cards[j].classList.contains('is-flipped')) {
+                    cards[j].classList.remove('is-flipped');
+                    transitioning[j] = true;
+                    inners[j].style.transition = 'transform 0.5s ease-in-out';
+                    inners[j].style.transform = 'rotateY(0deg)';
+                    // transition完了後に flutter を再開
+                    (function(k) {
+                        setTimeout(function() { transitioning[k] = false; }, 550);
+                    })(j);
+                }
+            }
+        }
+
         // クリックイベント
         for (var i = 0; i < cards.length; i++) {
             (function(idx) {
                 cards[idx].addEventListener('click', function(e) {
-                    // リンクのクリックは伝播させる
+                    // カード外クリック検知へのバブリングを抑止
+                    e.stopPropagation();
+                    // リンクのクリックはカード状態を維持したまま開かせる
                     if (e.target.tagName === 'A') return;
 
                     var wasFlipped = cards[idx].classList.contains('is-flipped');
 
                     // 全カードをリセット（他のカードを閉じる）
-                    for (var j = 0; j < cards.length; j++) {
-                        if (cards[j].classList.contains('is-flipped')) {
-                            cards[j].classList.remove('is-flipped');
-                            transitioning[j] = true;
-                            inners[j].style.transition = 'transform 0.5s ease-in-out';
-                            inners[j].style.transform = 'rotateY(0deg)';
-                            // transition完了後に flutter を再開
-                            (function(k) {
-                                setTimeout(function() { transitioning[k] = false; }, 550);
-                            })(j);
-                        }
-                    }
+                    closeAllCards();
 
                     // 自分をフリップ（まだ開いていなかった場合のみ）
                     if (!wasFlipped) {
@@ -624,6 +631,20 @@
                 });
             })(i);
         }
+
+        // カード以外の部分をクリックしたら開いているカードを閉じる
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.member-flip-card')) {
+                closeAllCards();
+            }
+        });
+
+        // Escキーでも閉じる
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeAllCards();
+            }
+        });
     })();
     </script>
 
